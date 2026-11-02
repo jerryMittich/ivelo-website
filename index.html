@@ -3,36 +3,61 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>iVelo Apps</title>
-  <meta name="description" content="Apps aus Südtirol – einfach, sicher und ohne Tracking. App dall'Alto Adige – semplici, sicure e senza tracciamento.">
+  <title>iVelo Apps – Apps aus Südtirol</title>
+  <meta name="description" content="Apps aus Südtirol – einfach, sicher und ohne Tracking.">
   <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/assets/ivelo-mark.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="de" href="https://ivelo.app/">
+  <link rel="alternate" hreflang="it" href="https://ivelo.app/it/">
 </head>
-<body>
+<body class="home">
   <header class="site">
     <div class="wrap">
       <a class="wordmark" href="/">iVelo <span>Apps</span></a>
+      <nav class="lang">
+        <a href="/" lang="de" aria-current="page">DE</a>
+        <a href="/it/" lang="it" >IT</a>
+      </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <h1>Apps aus Südtirol.</h1>
-    <p class="lead">Einfach, sicher und ohne Tracking.<br>
-      <span lang="it">App dall'Alto Adige – semplici, sicure e senza tracciamento.</span></p>
+  <section class="intro">
+    <div class="wrap">
+      <h1>Apps aus <em>Südtirol</em>.</h1>
+      <p class="lead">Einfach zu bedienen, sicher gebaut und ohne Tracking – auf Deutsch und Italienisch.</p>
+    </div>
+    <svg class="peaks" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true">
+      <path class="back" d="M0 200V132L90 102L160 124L255 54L300 88L360 30L412 82L482 62L567 110L672 38L710 68L760 20L812 76L922 86L1007 46L1087 90L1192 54L1277 84L1347 66L1440 96V200Z"/>
+      <path class="front" d="M0 200V164L130 138L250 160L370 122L510 156L630 130L770 166L910 134L1050 160L1190 130L1320 154L1440 140V200Z"/>
+    </svg>
+  </section>
 
-    <h2>Unsere Apps · <span lang="it">Le nostre app</span></h2>
-    <a class="card" href="/tresorio/">
-      <img src="/assets/tresorio-icon.png" alt="" width="64" height="64">
-      <div>
+  <main class="wrap">
+    <h2>Unsere Apps</h2>
+    <div class="apps">
+      <a class="app" href="/tresorio/">
+        <img src="/assets/tresorio-icon.png" alt="" width="64" height="64">
         <strong>Tresorio</strong>
-        <span>Wichtige Dokumente der Familie – verschlüsselt auf dem Handy.<br>
-          <span lang="it">I documenti importanti della famiglia – crittografati sul telefono.</span></span>
+        <p>Die wichtigen Dokumente der Familie – verschlüsselt auf dem Handy, mit Erinnerung vor dem Ablauf.</p>
+        <div class="chips"><span>Verschlüsselt</span><span>Für die Familie</span><span>Offline</span></div>
+        <span class="more">Mehr erfahren →</span>
+      </a>
+      <div class="app soon">
+        <p>Weitere Apps sind in Arbeit.</p>
       </div>
-    </a>
+    </div>
+
+    <ul class="values">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.4 3.4 8.3 8 9 4.6-.7 8-4.6 8-9V6Z"/><path d="m9 12 2 2 4-4"/></svg><div><strong>Datenschutz zuerst</strong><span>Deine Daten gehören dir. Wo möglich, bleiben sie auf deinem Gerät.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><path d="M3 3l18 18"/></svg><div><strong>Kein Tracking</strong><span>Keine Werbung, keine Analyse-Dienste – weder in den Apps noch hier.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 20 6.5-11 4 6.5L16 12l5 8Z"/></svg><div><strong>Aus Südtirol</strong><span>Gemacht in Bruneck, für den Alltag zwischen zwei Sprachen.</span></div></li>
+    </ul>
   </main>
 
   <footer class="site">
     <div class="wrap">
       <a href="/impressum/">Impressum · Note legali</a>
+      <a href="mailto:privacy@ivelo.app">Kontakt</a>
     </div>
   </footer>
 </body>
