@@ -63,6 +63,18 @@
   }
 }
 
+/* Timaro-Seiten: Hellblau der App. */
+.timaro {
+  --accent: #218ced;
+  --accent-text: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  .timaro {
+    --accent: #6bc2ff;
+    --accent-text: #0f1513;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
