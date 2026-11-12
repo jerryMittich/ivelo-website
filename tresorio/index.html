@@ -7,48 +7,74 @@
   <meta name="description" content="Tresorio: Ausweise, Verträge und Gesundheitsdokumente der ganzen Familie – verschlüsselt auf dem Handy, mit Erinnerung vor dem Ablauf.">
   <link rel="stylesheet" href="/assets/style.css">
   <link rel="icon" href="/assets/tresorio-icon.png">
+  <script>document.documentElement.classList.add("js")</script>
+  <script src="/assets/site.js" defer></script>
 </head>
-<body class="tresorio">
+<body class="page-tresorio">
   <header class="site">
-    <div class="wrap">
+    <div class="wide">
       <a class="wordmark" href="/">iVelo <span>Apps</span></a>
+      <nav class="apps-nav" aria-label="Apps"><a href="/tresorio/">Tresorio</a><a href="/timaro/">Timaro</a></nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <div class="hero">
-      <img src="/assets/tresorio-icon.png" alt="" width="88" height="88">
-      <div>
-        <h1>Tresorio</h1>
-        <p class="lead" style="margin:0">Deine Dokumente. Sicher an einem Ort.</p>
+  <main>
+  <section class="app-hero">
+    <div class="wide">
+      <div class="reveal">
+        <img class="app-icon" src="/assets/tresorio-icon.png" alt="" width="96" height="96">
+        <span class="eyebrow">Tresorio</span>
+        <h1>Deine Dokumente. Sicher an einem Ort.</h1>
+        <p class="lead">Ausweise, Verträge und Gesundheitsdokumente der ganzen Familie – verschlüsselt auf dem Handy, mit Erinnerung, bevor etwas abläuft.</p>
+        <div class="cta-links">
+          <span class="soon">Bald bei Google Play</span>
+        </div>
+      </div>
+      <div class="stage" data-stage>
+        <div class="phone side l"><img src="/assets/shots/tresorio/de-dokument.webp" alt="Ein Dokument in Tresorio: Carta d'identità mit Ablaufdatum und Erinnerungen" width="600" height="1333" loading="lazy" decoding="async"></div>
+        <div class="phone main"><img src="/assets/shots/tresorio/de-start.webp" alt="Startseite von Tresorio: bald ablaufende Dokumente, Personen und Kategorien" width="600" height="1333" loading="lazy" decoding="async"></div>
+        <div class="phone side r"><img src="/assets/shots/tresorio/de-suche.webp" alt="Suche in Tresorio über alle Dokumente der Familie" width="600" height="1333" loading="lazy" decoding="async"></div>
+      </div>
+      <ul class="tiles" role="list" style="list-style:none;padding:0">
+        <li class="tile reveal wide-tile" style="--d:0"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><strong>Verschlüsselt auf deinem Handy</strong><span>Nur du kannst deine Dokumente öffnen – mit PIN oder Fingerabdruck. Keine Werbung, kein Tracking.</span></li>
+        <li class="tile reveal" style="--d:1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4Z"/><path d="M10 21h4"/></svg><strong>Erinnert dich rechtzeitig</strong><span>Tresorio erkennt das Ablaufdatum und meldet sich 3 Monate, 1 Monat und 1 Woche vorher.</span></li>
+        <li class="tile reveal" style="--d:2"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2a5 5 0 0 1 5.5 5.8"/></svg><strong>Für die ganze Familie</strong><span>Übersichtlich nach Person und Kategorie geordnet.</span></li>
+        <li class="tile reveal" style="--d:3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M4 12h16"/></svg><strong>In Sekunden gescannt</strong><span>Fotografieren, fertig. Die Texterkennung läuft auf dem Gerät.</span></li>
+        <li class="tile reveal" style="--d:0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 8.5a15 15 0 0 1 20 0M5.5 12a10 10 0 0 1 13 0M9 15.5a5 5 0 0 1 6 0"/><circle cx="12" cy="19" r="1"/></svg><strong>Immer dabei</strong><span>Alle Dokumente sind auch ohne Internet abrufbar.</span></li>
+        <li class="tile reveal wide-tile" style="--d:1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 9.5a4 4 0 0 1-.5 8.5Z"/><path d="M10 14l1.5 1.5L14.5 12"/></svg><strong>Backup ohne Mitlesen</strong><span>Mit Tresorio Plus: Ende-zu-Ende-verschlüsseltes Cloud-Backup auf Servern in der EU. Wir können deine Dokumente nicht lesen.</span></li>
+      </ul>
+      <div class="store reveal" data-gallery>
+        <div class="store-head">
+          <div><h3>Store-Screenshots</h3><p>So präsentiert sich Tresorio im Store. Alle Daten sind erfunden.</p></div>
+          <div class="gallery-nav"><button type="button" data-prev aria-label="Zurück">‹</button><button type="button" data-next aria-label="Weiter">›</button></div>
+        </div>
+        <div class="gallery" tabindex="0" aria-label="Store-Screenshots">
+          <img src="/assets/shots/tresorio/store-de-1.webp" alt="Erinnert dich, bevor etwas abläuft" width="600" height="1300" loading="lazy" decoding="async">
+          <img src="/assets/shots/tresorio/store-de-2.webp" alt="Alle Ausweise immer dabei – auch offline" width="600" height="1300" loading="lazy" decoding="async">
+          <img src="/assets/shots/tresorio/store-de-3.webp" alt="Die ganze Familie, übersichtlich geordnet" width="600" height="1300" loading="lazy" decoding="async">
+          <img src="/assets/shots/tresorio/store-de-4.webp" alt="Alles in Sekunden gefunden" width="600" height="1300" loading="lazy" decoding="async">
+          <img src="/assets/shots/tresorio/store-de-5.webp" alt="Verschlüsselt und mit PIN geschützt" width="600" height="1300" loading="lazy" decoding="async">
+          <img src="/assets/shots/tresorio/store-de-6.webp" alt="Auf Deutsch e in italiano" width="600" height="1300" loading="lazy" decoding="async">
+        </div>
       </div>
     </div>
+  </section>
 
-    <ul class="features">
-      <li><strong>Verschlüsselt auf deinem Handy</strong><br>
-        <span class="muted">Ausweise, Führerschein, Versicherungen, Gesundheitskarte – nur du kannst sie öffnen, mit PIN oder Fingerabdruck.</span></li>
-      <li><strong>Erinnerung, bevor etwas abläuft</strong><br>
-        <span class="muted">Tresorio erkennt das Ablaufdatum beim Scannen und erinnert dich rechtzeitig.</span></li>
-      <li><strong>Für die ganze Familie</strong><br>
-        <span class="muted">Ordner pro Person und Kategorie – auch ohne Internet.</span></li>
-      <li><strong>Backup ohne Mitlesen</strong><br>
-        <span class="muted">Mit Tresorio Plus: verschlüsseltes Cloud-Backup auf Servern in der EU. Wir können deine Dokumente nicht lesen.</span></li>
-    </ul>
-
-    <p><a class="button" aria-disabled="true">Bald bei Google Play</a></p>
-
-    <h2 lang="it">In italiano</h2>
-    <p lang="it">Carta d'identità, patente, assicurazioni, tessera sanitaria: tutti i documenti della famiglia, crittografati sul telefono, con promemoria prima della scadenza. Backup cloud crittografato nell'UE con Tresorio Plus – noi non possiamo leggere i tuoi documenti.</p>
-
-    <ul class="links">
-      <li><a href="/tresorio/datenschutz/">Datenschutzerklärung</a></li>
-      <li><a href="/tresorio/privacy-it/" lang="it">Informativa sulla privacy</a></li>
-      <li><a href="/tresorio/konto-loeschen/">Konto löschen · <span lang="it">Elimina account</span></a></li>
-    </ul>
+    <section class="app-more">
+      <div class="wrap">
+        <h2 lang="it">In italiano</h2>
+        <p lang="it">Carta d'identità, patente, assicurazioni, tessera sanitaria: tutti i documenti della famiglia, crittografati sul telefono, con promemoria prima della scadenza. Backup cloud crittografato nell'UE con Tresorio Plus – noi non possiamo leggere i tuoi documenti.</p>
+        <ul class="links">
+        <li><a href="/tresorio/datenschutz/">Datenschutzerklärung</a></li>
+        <li><a href="/tresorio/privacy-it/" lang="it">Informativa sulla privacy</a></li>
+        <li><a href="/tresorio/konto-loeschen/">Konto löschen · <span lang="it">Elimina account</span></a></li>
+        </ul>
+      </div>
+    </section>
   </main>
 
   <footer class="site">
-    <div class="wrap">
+    <div class="wide">
       <a href="/">iVelo Apps</a>
       <a href="/impressum/">Impressum · Note legali</a>
     </div>

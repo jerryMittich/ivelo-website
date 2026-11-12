@@ -103,7 +103,14 @@ a {
 }
 
 header.site {
-  padding: 24px 0 8px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 10px 0;
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
+  backdrop-filter: saturate(180%) blur(18px);
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
 }
 
 header.site .wrap {
@@ -184,69 +191,6 @@ h3 {
   color: var(--muted);
 }
 
-.card {
-  display: flex;
-  gap: 18px;
-  align-items: center;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
-  color: var(--text);
-  text-decoration: none;
-}
-
-a.card:hover {
-  border-color: var(--muted);
-}
-
-.card img {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  flex: none;
-}
-
-.card strong {
-  display: block;
-  font-size: 19px;
-  font-weight: 800;
-}
-
-.card span {
-  color: var(--muted);
-  font-size: 15px;
-}
-
-.hero {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.hero img {
-  width: 88px;
-  height: 88px;
-  border-radius: 22px;
-  flex: none;
-}
-
-ul.features {
-  list-style: none;
-  padding: 0;
-  margin: 24px 0;
-  display: grid;
-  gap: 12px;
-}
-
-ul.features li {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 14px 16px;
-}
-
 .button {
   display: inline-block;
   background: var(--accent);
@@ -315,163 +259,770 @@ footer.site a {
   margin-right: 16px;
 }
 
-/* Startseite */
+/* ------------------------------------------------------------------
+   Showcase-Design (Startseite und App-Seiten)
+   Große Überschriften, Abschnitte pro App, Screenshots in Geräte-
+   rahmen, Animationen beim Scrollen (assets/site.js).
+   ------------------------------------------------------------------ */
 
-.intro {
+:root {
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --tim-bg: #e6f3ff;
+  --tim-bg-2: #f6fbff;
+  --tim-ink: #0b2a4a;
+  --tim-accent: #1a7fe0;
+  --tres-bg: #14213d;
+  --tres-bg-2: #1c2c50;
+  --tres-gold: #d6b13a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tim-bg: #0d2134;
+    --tim-bg-2: #0f1513;
+    --tim-ink: #e6f3ff;
+    --tim-accent: #6bc2ff;
+    --tres-bg: #0e1830;
+    --tres-bg-2: #0f1513;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px;
+}
+
+.wide {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+header.site .wide {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+nav.apps-nav {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+nav.apps-nav a {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 999px;
+  opacity: 0.8;
+}
+
+nav.apps-nav a:hover {
+  opacity: 1;
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+nav.apps-nav + nav.lang a:first-child {
+  margin-left: 4px;
+}
+
+@media (max-width: 420px) {
+  nav.apps-nav a {
+    padding: 6px 7px;
+  }
+  .wordmark span {
+    display: none;
+  }
+}
+
+/* Reveal beim Scrollen. Ohne JavaScript bleibt alles sichtbar. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(36px) scale(0.985);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  transition-delay: calc(var(--d, 0) * 90ms);
+}
+
+.js .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero */
+
+.hero-home {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: clamp(56px, 10vw, 112px) 0 0;
   background: linear-gradient(180deg, var(--bg) 0%, var(--hero) 100%);
-  margin-top: -8px;
 }
 
-.intro .wrap {
-  padding-top: 40px;
-  padding-bottom: 8px;
+.hero-home h1 {
+  font-size: clamp(44px, 10vw, 104px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  margin: 0 auto 18px;
+  max-width: 12ch;
+  transform: translateY(calc(var(--s, 0) * -60px)) scale(calc(1 - var(--s, 0) * 0.06));
+  opacity: calc(1 - var(--s, 0) * 1.2);
 }
 
-.intro h1 {
-  font-size: clamp(34px, 8vw, 56px);
-  margin: 0 0 12px;
-}
-
-.intro h1 em {
+.hero-home h1 em {
   font-style: normal;
-  color: var(--accent);
+  background: linear-gradient(100deg, #2f7d5a 0%, #1a7fe0 55%, #c9a227 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.intro .lead {
-  max-width: 34ch;
-  margin-bottom: 8px;
+@media (prefers-color-scheme: dark) {
+  .hero-home h1 em {
+    background-image: linear-gradient(100deg, #8fd0aa 0%, #6bc2ff 55%, #e2c25a 100%);
+  }
 }
 
-.peaks {
+.hero-home .lead {
+  max-width: 36ch;
+  margin: 0 auto 28px;
+  font-size: clamp(18px, 2.4vw, 22px);
+}
+
+.pill-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  background: var(--text);
+  color: var(--bg);
+  transition: transform 0.2s var(--ease), opacity 0.2s;
+}
+
+.pill img {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+}
+
+.pill.ghost {
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+  color: var(--text);
+}
+
+.pill:hover {
+  transform: translateY(-1px);
+}
+
+.hero-stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(12px, 3vw, 40px);
+  margin-top: clamp(40px, 7vw, 72px);
+  padding: 0 16px;
+  z-index: 1;
+}
+
+.hero-stage .phone:first-child {
+  transform: translateY(calc(40px - var(--s, 0) * 70px)) rotate(calc(-7deg + var(--s, 0) * 5deg));
+}
+
+.hero-stage .phone:last-child {
+  transform: translateY(calc(40px - var(--s, 0) * 140px)) rotate(calc(7deg - var(--s, 0) * 5deg));
+}
+
+.hero-home .peaks {
+  position: relative;
   display: block;
   width: 100%;
-  height: auto;
-  margin-top: 8px;
+  height: clamp(80px, 12vw, 180px);
+  margin-top: clamp(-120px, -8vw, -60px);
+  z-index: 2;
 }
 
 .peaks .back {
   fill: var(--peak-back);
 }
 
+/* Die vordere Bergkette geht nahtlos in den Tresorio-Abschnitt über. */
 .peaks .front {
-  fill: var(--peak-front);
+  fill: var(--tres-bg);
 }
 
-.home main {
-  padding-top: 32px;
-  padding-bottom: 64px;
+/* Gerät mit Screenshot */
+
+.phone {
+  --w: clamp(150px, 26vw, 300px);
+  position: relative;
+  flex: none;
+  width: var(--w);
+  padding: calc(var(--w) * 0.028);
+  border-radius: calc(var(--w) * 0.16);
+  background: linear-gradient(145deg, #3a3d42, #101113 40%, #2a2c30);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 30px 60px -20px rgba(10, 20, 40, 0.45),
+    0 12px 24px -12px rgba(10, 20, 40, 0.35);
 }
 
-.apps {
+.phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--w) * 0.135);
+  background: #fff;
+}
+
+.phone.sm {
+  --w: clamp(120px, 20vw, 230px);
+}
+
+.phone.lg {
+  --w: clamp(190px, 32vw, 330px);
+}
+
+/* App-Abschnitte */
+
+.showcase {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(80px, 12vw, 140px) 0 clamp(64px, 9vw, 110px);
+  text-align: center;
+}
+
+.showcase .app-icon {
+  width: 84px;
+  height: 84px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.35);
+}
+
+.eyebrow {
+  display: block;
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 800;
+  margin: 18px 0 6px;
+}
+
+.showcase h2,
+.app-hero h1 {
+  font-size: clamp(38px, 7.4vw, 80px);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  margin: 0 auto 18px;
+  max-width: 14ch;
+}
+
+.showcase .lead,
+.app-hero .lead {
+  max-width: 40ch;
+  margin: 0 auto 26px;
+  font-size: clamp(18px, 2.2vw, 22px);
+}
+
+.cta-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.cta-links a {
+  text-decoration: none;
+}
+
+.cta-links a:hover {
+  text-decoration: underline;
+}
+
+.cta-links a.btn,
+.cta-links a.btn:hover {
+  text-decoration: none;
+}
+
+.cta-links a.btn {
+  padding: 12px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.cta-links .soon {
+  opacity: 0.7;
+}
+
+/* Bühne mit drei Telefonen, die beim Scrollen auseinanderfahren */
+.stage {
+  --p: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: clamp(48px, 8vw, 88px) auto 0;
+  padding: 0 16px;
+}
+
+.stage .phone.side {
+  --w: clamp(110px, 21vw, 250px);
+  z-index: 0;
+  opacity: calc(0.35 + var(--p) * 0.65);
+}
+
+.stage .phone.side.l {
+  transform: translateX(calc((1 - var(--p)) * 70%)) scale(calc(0.86 + var(--p) * 0.06)) rotate(calc((1 - var(--p)) * 4deg));
+  margin-right: calc(var(--w) * -0.16);
+}
+
+.stage .phone.side.r {
+  transform: translateX(calc((1 - var(--p)) * -70%)) scale(calc(0.86 + var(--p) * 0.06)) rotate(calc((1 - var(--p)) * -4deg));
+  margin-left: calc(var(--w) * -0.16);
+}
+
+.stage .phone.main {
+  --w: clamp(150px, 28vw, 310px);
+  z-index: 1;
+  transform: translateY(calc((1 - var(--p)) * 50px)) scale(calc(0.94 + var(--p) * 0.06));
+}
+
+/* Funktionen als Kacheln */
+.tiles {
   display: grid;
-  gap: 16px;
   grid-template-columns: 1fr;
+  gap: 14px;
+  margin: clamp(48px, 8vw, 88px) auto 0;
+  text-align: left;
 }
 
-@media (min-width: 640px) {
-  .apps {
-    grid-template-columns: 1fr 1fr;
+@media (min-width: 720px) {
+  .tiles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .tiles .tile.wide-tile {
+    grid-column: span 2;
   }
 }
 
-.app {
+@media (min-width: 1000px) {
+  .tiles {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .tiles .tile.wide-tile {
+    grid-column: span 2;
+  }
+}
+
+.tile {
+  border-radius: 26px;
+  padding: 26px 24px;
+  min-height: 180px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  padding: 22px;
-  color: var(--text);
-  text-decoration: none;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  justify-content: flex-end;
 }
 
-a.app:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(31, 77, 58, 0.12);
+.tile svg {
+  width: 30px;
+  height: 30px;
+  margin-bottom: auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.app img {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-}
-
-.app strong {
+.tile strong {
+  display: block;
   font-size: 21px;
+  line-height: 1.2;
   font-weight: 800;
+  margin: 22px 0 6px;
+  letter-spacing: -0.01em;
 }
 
-.app p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 16px;
+.tile span {
+  font-size: 15.5px;
+  line-height: 1.5;
 }
 
-.app .more {
-  margin-top: auto;
+.tile .big {
+  font-size: clamp(40px, 5vw, 56px);
   font-weight: 800;
-  color: var(--accent);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: auto;
 }
 
-.app.soon {
-  background: transparent;
-  border-style: dashed;
-  justify-content: center;
-  color: var(--muted);
+/* Store-Screenshots als waagrechte Galerie */
+.store {
+  margin-top: clamp(56px, 9vw, 100px);
+  text-align: left;
 }
 
-.chips {
+.store-head {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
 }
 
-.chips span {
-  font-size: 13px;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: var(--hero);
-  color: var(--text);
+.store-head h3 {
+  margin: 0;
+  font-size: clamp(22px, 3vw, 30px);
+  letter-spacing: -0.02em;
 }
 
-.values {
+.store-head p {
+  margin: 2px 0 0;
+  font-size: 15px;
+  opacity: 0.75;
+}
+
+.gallery-nav {
+  display: none;
+  gap: 8px;
+  flex: none;
+}
+
+.js .gallery-nav {
+  display: flex;
+}
+
+.gallery-nav button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 20px;
+  line-height: 1;
+  color: inherit;
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  transition: background 0.2s;
+}
+
+.gallery-nav button:hover {
+  background: color-mix(in srgb, currentColor 20%, transparent);
+}
+
+.gallery-nav button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+@media (max-width: 640px) {
+  .gallery-nav {
+    display: none !important;
+  }
+}
+
+.gallery {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 16px;
+  padding: 4px 16px 18px;
+  margin: 0 -16px;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.gallery::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery img {
+  flex: none;
+  width: clamp(170px, 22vw, 236px);
+  height: auto;
+  border-radius: 22px;
+  scroll-snap-align: start;
+  box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.45);
+  transition: transform 0.4s var(--ease);
+}
+
+.gallery img:hover {
+  transform: translateY(-4px);
+}
+
+/* Timaro: helles Blau */
+.showcase.timaro,
+.page-timaro .app-hero {
+  background: linear-gradient(180deg, var(--tim-bg-2) 0%, var(--tim-bg) 100%);
+  color: var(--tim-ink);
+}
+
+.showcase.timaro .eyebrow,
+.showcase.timaro .cta-links a,
+.page-timaro .eyebrow,
+.page-timaro .cta-links a {
+  color: var(--tim-accent);
+}
+
+.showcase.timaro .cta-links a.btn,
+.page-timaro .cta-links a.btn {
+  background: var(--tim-accent);
+  color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .showcase.timaro .cta-links a.btn,
+  .page-timaro .cta-links a.btn {
+    color: #0b2a4a;
+  }
+}
+
+.showcase.timaro .lead,
+.page-timaro .lead {
+  color: color-mix(in srgb, var(--tim-ink) 72%, transparent);
+}
+
+.showcase.timaro .tile,
+.page-timaro .tile {
+  background: color-mix(in srgb, #ffffff 72%, transparent);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 10px 30px -22px rgba(11, 42, 74, 0.5);
+}
+
+.showcase.timaro .tile svg,
+.page-timaro .tile svg,
+.showcase.timaro .tile .big,
+.page-timaro .tile .big {
+  color: var(--tim-accent);
+}
+
+.showcase.timaro .tile span,
+.page-timaro .tile span {
+  color: color-mix(in srgb, var(--tim-ink) 70%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  .showcase.timaro .tile,
+  .page-timaro .tile {
+    background: color-mix(in srgb, #ffffff 6%, transparent);
+    box-shadow: none;
+  }
+}
+
+/* Tresorio: Navy mit Gold */
+.showcase.tresorio,
+.page-tresorio .app-hero {
+  background:
+    radial-gradient(60% 40% at 50% 0%, rgba(214, 177, 58, 0.16), transparent 70%),
+    linear-gradient(180deg, var(--tres-bg) 0%, var(--tres-bg-2) 100%);
+  color: #f3f5fa;
+}
+
+.showcase.tresorio .eyebrow,
+.showcase.tresorio .cta-links a,
+.page-tresorio .eyebrow,
+.page-tresorio .cta-links a {
+  color: var(--tres-gold);
+}
+
+.showcase.tresorio .cta-links a.btn,
+.page-tresorio .cta-links a.btn {
+  background: var(--tres-gold);
+  color: #14213d;
+}
+
+.showcase.tresorio .lead,
+.page-tresorio .lead,
+.showcase.tresorio .tile span,
+.page-tresorio .tile span {
+  color: rgba(243, 245, 250, 0.72);
+}
+
+.showcase.tresorio .tile,
+.page-tresorio .tile {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.showcase.tresorio .tile svg,
+.page-tresorio .tile svg,
+.showcase.tresorio .tile .big,
+.page-tresorio .tile .big {
+  color: var(--tres-gold);
+}
+
+.showcase.tresorio .phone,
+.page-tresorio .phone {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 40px 80px -24px rgba(0, 0, 0, 0.7);
+}
+
+/* Werte */
+.values-section {
+  padding: clamp(80px, 12vw, 140px) 0;
+  text-align: center;
+}
+
+.values-section h2 {
+  font-size: clamp(34px, 6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin: 0 auto 48px;
+  max-width: 16ch;
+}
+
+.values-grid {
   list-style: none;
   padding: 0;
-  margin: 40px 0 0;
+  margin: 0;
   display: grid;
-  gap: 18px;
+  gap: 14px;
   grid-template-columns: 1fr;
+  text-align: left;
 }
 
-@media (min-width: 640px) {
-  .values {
+@media (min-width: 760px) {
+  .values-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-.values li {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
+.values-grid li {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  padding: 28px 26px;
 }
 
-.values svg {
-  flex: none;
-  width: 24px;
-  height: 24px;
-  margin-top: 2px;
+.values-grid svg {
+  width: 32px;
+  height: 32px;
   stroke: var(--accent);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.values strong {
+.values-grid strong {
   display: block;
+  font-size: 21px;
   font-weight: 800;
+  margin: 18px 0 6px;
 }
 
-.values span {
+.values-grid span {
   color: var(--muted);
-  font-size: 15px;
+  font-size: 15.5px;
+}
+
+.values-section .more-apps {
+  margin: 40px 0 0;
+  color: var(--muted);
+}
+
+/* App-Seiten */
+.app-hero {
+  overflow: hidden;
+  text-align: center;
+  padding: clamp(56px, 9vw, 104px) 0 clamp(64px, 9vw, 110px);
+}
+
+.app-hero .app-icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 22px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.35);
+}
+
+.app-hero .eyebrow {
+  margin-top: 16px;
+}
+
+.app-more {
+  padding: clamp(48px, 7vw, 80px) 0 clamp(56px, 8vw, 88px);
+}
+
+.app-more h2 {
+  font-size: clamp(26px, 3.6vw, 36px);
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+}
+
+.app-more .links {
+  margin-top: 32px;
+}
+
+footer.site .wide {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 0;
+}
+
+/* Wer weniger Bewegung möchte, bekommt sie. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero-home h1,
+  .hero-stage .phone,
+  .stage .phone {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .stage .phone.side.l,
+  .stage .phone.side.r {
+    transform: scale(0.92) !important;
+  }
+}
+
+/* Die Abschnitte liegen direkt aneinander. */
+.home main,
+.page-timaro main,
+.page-tresorio main {
+  padding: 0;
+}
+
+/* Galerie läuft bis an den Bildschirmrand, beginnt aber bündig mit dem Text. */
+.gallery {
+  --edge: max(16px, calc(50vw - 544px));
+  margin: 0 calc(50% - 50vw);
+  padding-left: var(--edge);
+  padding-right: var(--edge);
+  scroll-padding-left: var(--edge);
+}
+
+@media (max-width: 719px) {
+  .phone.lg {
+    --w: clamp(140px, 42vw, 190px);
+  }
+  .hero-stage {
+    gap: 10px;
+  }
+  .tile {
+    min-height: 0;
+  }
+  .tile strong {
+    margin-top: 14px;
+  }
 }
