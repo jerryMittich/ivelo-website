@@ -1044,3 +1044,43 @@ footer.site .wide {
     font-size: 15px;
   }
 }
+
+/* Fußzeile: Links links, Instagram rechts */
+footer.site .wrap,
+footer.site .wide {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 0;
+}
+
+footer.site a.social {
+  margin: 0 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 8px;
+  border-radius: 999px;
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+footer.site a.social:hover {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+}
+
+footer.site a.social svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+footer.site a.social svg .dot {
+  fill: currentColor;
+  stroke: none;
+}
