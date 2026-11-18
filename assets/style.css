@@ -63,6 +63,19 @@
   }
 }
 
+/* Nestaro-Seiten: Petrol der App, Koralle als Akzent. */
+.nestaro {
+  --accent: #0f6e6e;
+  --accent-text: #ffffff;
+  --gold: #ff8c61;
+}
+@media (prefers-color-scheme: dark) {
+  .nestaro {
+    --accent: #6cc5c0;
+    --accent-text: #0f1513;
+  }
+}
+
 /* Timaro-Seiten: Hellblau der App. */
 .timaro {
   --accent: #218ced;
@@ -274,6 +287,10 @@ footer.site a {
   --tres-bg: #14213d;
   --tres-bg-2: #1c2c50;
   --tres-gold: #d6b13a;
+  --nes-bg: #0f4f4f;
+  --nes-bg-2: #0c3536;
+  --nes-accent: #6cc5c0;
+  --nes-coral: #ff8c61;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -284,6 +301,8 @@ footer.site a {
     --tim-accent: #6bc2ff;
     --tres-bg: #0e1830;
     --tres-bg-2: #101122;
+    --nes-bg: #0b3233;
+    --nes-bg-2: #0f1513;
   }
 }
 
@@ -870,6 +889,51 @@ nav.apps-nav + nav.lang a:first-child {
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.12) inset,
     0 40px 80px -24px rgba(0, 0, 0, 0.7);
+}
+
+/* Nestaro: Petrol mit Koralle */
+.showcase.nestaro,
+.page-nestaro .app-hero {
+  background:
+    radial-gradient(60% 40% at 50% 0%, rgba(255, 140, 97, 0.14), transparent 70%),
+    linear-gradient(180deg, var(--nes-bg) 0%, var(--nes-bg-2) 100%);
+  color: #f1f8f7;
+}
+
+.showcase.nestaro .eyebrow,
+.showcase.nestaro .cta-links a,
+.page-nestaro .eyebrow,
+.page-nestaro .cta-links a {
+  color: var(--nes-accent);
+}
+
+.showcase.nestaro .cta-links a.btn,
+.page-nestaro .cta-links a.btn {
+  background: var(--nes-accent);
+  color: #0b3233;
+}
+
+.showcase.nestaro .lead,
+.page-nestaro .lead,
+.showcase.nestaro .tile span,
+.page-nestaro .tile span {
+  color: rgba(241, 248, 247, 0.74);
+}
+
+.showcase.nestaro .soon,
+.page-nestaro .soon {
+  color: rgba(241, 248, 247, 0.6);
+}
+
+.showcase.nestaro .tile,
+.page-nestaro .tile {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.showcase.nestaro .tile svg,
+.page-nestaro .tile svg {
+  color: var(--nes-coral);
 }
 
 /* Werte */
