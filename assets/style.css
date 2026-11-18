@@ -465,6 +465,10 @@ nav.apps-nav + nav.lang a:first-child {
   transform: translateY(calc(40px - var(--s, 0) * 140px)) rotate(calc(7deg - var(--s, 0) * 5deg));
 }
 
+.hero-stage .phone:nth-child(2):not(:last-child) {
+  transform: translateY(calc(0px - var(--s, 0) * 105px));
+}
+
 .hero-home .peaks {
   position: relative;
   display: block;
@@ -1082,6 +1086,9 @@ footer.site .wide {
   }
   .hero-stage {
     gap: 10px;
+  }
+  .hero-stage .phone.lg {
+    --w: clamp(96px, 29vw, 190px);
   }
   .tile {
     min-height: 0;
