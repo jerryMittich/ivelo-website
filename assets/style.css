@@ -1148,3 +1148,10 @@ footer.site a.social svg .dot {
   fill: currentColor;
   stroke: none;
 }
+
+.showcase.nestaro .phone,
+.page-nestaro .phone {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 40px 80px -24px rgba(0, 0, 0, 0.7);
+}
