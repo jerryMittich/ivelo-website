@@ -1162,3 +1162,10 @@ footer.site a.social svg .dot {
     0 0 0 1px rgba(255, 255, 255, 0.12) inset,
     0 40px 80px -24px rgba(0, 0, 0, 0.7);
 }
+
+/* Zweiter Store-Knopf (z. B. Google Play) als Umriss neben dem gefüllten */
+.cta-links a.btn.alt {
+  background: transparent !important;
+  color: inherit !important;
+  box-shadow: inset 0 0 0 2px currentColor;
+}
