@@ -41,11 +41,15 @@ Schrift: Manrope ExtraBold („iVelo“) und SemiBold („Apps“), siehe `asset
 |---|---|
 | `ivelo-flyer-A5-beschnitt.pdf` | Druckdatei A5 (148 × 210 mm) mit 3 mm Beschnitt rundum (154 × 216 mm), RGB |
 | `ivelo-flyer-A5-vorschau.png` | Vorschau im Endformat, zum Ansehen und Verschicken |
+| `ivelo-flyer-A4-beschnitt.pdf` | Druckdatei A4 (210 × 297 mm) mit 3 mm Beschnitt rundum (216 × 303 mm), RGB – dieselbe Gestaltung, als Vektor vergrößert |
+| `ivelo-flyer-A4-vorschau.png` | Vorschau A4 im Endformat |
 | `qr-ivelo-app.svg` | QR-Code auf https://ivelo.app (Vektor, Fehlerkorrektur H) |
-| `flyer.html` | Quelle des Flyers; im Browser öffnen oder mit Playwright als PDF speichern |
+| `flyer.html`, `flyer-A4.html` | Quellen (A5 und A4); im Browser öffnen oder mit Playwright als PDF speichern. Inhalt in `flyer.html` ändern und in `flyer-A4.html` übernehmen – dort ist nur die Seitengröße anders |
 
 Texte mit mindestens 8 mm Abstand zum Beschnittrand. Bei Änderungen an den Apps (z. B. Nestaro im Store) die Karten in `flyer.html` anpassen und das PDF neu erzeugen:
 
 ```
 node -e "const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage();await p.goto('file://'+process.cwd()+'/brand/flyer/flyer.html');await p.waitForTimeout(800);await p.pdf({path:'brand/flyer/ivelo-flyer-A5-beschnitt.pdf',width:'154mm',height:'216mm',printBackground:true,preferCSSPageSize:true});await b.close()})()"
 ```
+
+Für A4 denselben Befehl mit `flyer-A4.html`, `ivelo-flyer-A4-beschnitt.pdf`, `width:'216mm'` und `height:'303mm'`.
