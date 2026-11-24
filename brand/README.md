@@ -34,3 +34,18 @@ Schrift: Manrope ExtraBold („iVelo“) und SemiBold („Apps“), siehe `asset
 - Rund um das Logo mindestens so viel Platz lassen, wie der i-Punkt breit ist.
 - Nicht verzerren, nicht drehen, die Farben des Zeichens nicht einzeln ändern – für Sonderfälle die einfarbigen Versionen nehmen.
 - Kleinste Größe: 16 px (Favicon).
+
+## Flyer (`flyer/`)
+
+| Datei | Wofür |
+|---|---|
+| `ivelo-flyer-A5-beschnitt.pdf` | Druckdatei A5 (148 × 210 mm) mit 3 mm Beschnitt rundum (154 × 216 mm), RGB |
+| `ivelo-flyer-A5-vorschau.png` | Vorschau im Endformat, zum Ansehen und Verschicken |
+| `qr-ivelo-app.svg` | QR-Code auf https://ivelo.app (Vektor, Fehlerkorrektur H) |
+| `flyer.html` | Quelle des Flyers; im Browser öffnen oder mit Playwright als PDF speichern |
+
+Texte mit mindestens 8 mm Abstand zum Beschnittrand. Bei Änderungen an den Apps (z. B. Nestaro im Store) die Karten in `flyer.html` anpassen und das PDF neu erzeugen:
+
+```
+node -e "const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage();await p.goto('file://'+process.cwd()+'/brand/flyer/flyer.html');await p.waitForTimeout(800);await p.pdf({path:'brand/flyer/ivelo-flyer-A5-beschnitt.pdf',width:'154mm',height:'216mm',printBackground:true,preferCSSPageSize:true});await b.close()})()"
+```
